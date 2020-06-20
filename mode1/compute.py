@@ -2,8 +2,6 @@ import matplotlib.pyplot as plt
 import math
 import os, time, glob
 
-
-
 def compute(sigma_x, sigma_y, tau_xy, setta):
     sigma_avg = (float(sigma_x) + float(sigma_y)) / 2  # center of the Mohr's circle
     radius = math.sqrt(((float(sigma_x) - float(sigma_y)) / 2) ** 2 + (float(tau_xy)) ** 2)  # radius of the Mohr's circle
@@ -83,12 +81,21 @@ def compute(sigma_x, sigma_y, tau_xy, setta):
     plt.show()
     # Save img and deliver it to mode1.html
     # run plt.plot, plt.title, etc.
-    #from io import BytesIO
-    #figfile = BytesIO()
-    #fig.savefig(figfile, format='png')
-    #figfile.seek(0)  # rewind to beginning of file
-    #import base64
-    #figdata_png = base64.b64encode(figfile.getvalue())
+    from io import BytesIO
+    figfile = BytesIO()
+    fig.savefig(figfile, format='png')
+    figfile.seek(0)  # rewind to beginning of file
+    import base64
+    figdata_png = base64.b64encode(figfile.getvalue())
+    #if not os.path.isdir('static'):
+    #    os.mkdir('static')
+    #else:
+        # Remove old plot files
+    #    for filename in glob.glob(os.path.join('static', '*.png')):
+    #        os.remove(filename)
+    # Use time since Jan 1, 1970 in filename in order make
+    # a unique filename that the browser has not chached
+    #figdata_png = os.path.join('static', str(123) + '.png')
+    #plt.savefig(figdata_png)
 
-
-    return [str(round(sigma_xr, 3)), str(round(sigma_yr, 3)), str(round(tau_xyr, 3))]
+    return figdata_png, [str(round(sigma_xr, 3)), str(round(sigma_yr, 3)), str(round(tau_xyr, 3))]

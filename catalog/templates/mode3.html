@@ -10,11 +10,10 @@
       <tr>
       <td>{{ field.label }}</td>
       <td>{{ field }}</td>
-      <td>{{ field.errors }}</td>
+      <td>{{ field.help_text }}</td>
       <td></td>
       </tr>
     {% endfor %}
-    {{ form.unit.label }}
   </table>
   <p><input type="submit" value="Compute"></form></p>
 

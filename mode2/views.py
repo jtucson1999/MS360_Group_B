@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from mode2.models import InputForm 
 from mode2.compute import compute
 import os
@@ -20,7 +19,6 @@ def mode2(request):
 	else: 
 		form = InputForm()
 		
-
 	
 	return render(request, 'mode2.html', {
 		'form' : form,

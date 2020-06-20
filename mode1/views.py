@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from mode1.models import InputForm 
 from mode1.compute import compute
 import os
@@ -7,8 +6,8 @@ import os
 # Create your views here.
 
 def mode1(request):
-	os.chdir(os.path.dirname(__file__))
-	result = [None, None, None]
+	#os.chdir(os.path.dirname(__file__))
+	result = [None,[None, None, None]]
 	unit = None
 	if request.method == 'POST':
 		form = InputForm(request.POST)
@@ -19,13 +18,12 @@ def mode1(request):
 	else: 
 		form = InputForm()
 		
-
-	
 	return render(request, 'mode1.html', {
 		'form' : form,
-		'sigmax' : result[0],
-		'sigmay' : result[1],
-		'tauxy' : result[2],
+		'image' : result[0],
+		'sigmax' : result[1][0],
+		'sigmay' : result[1][1],
+		'tauxy' : result[1][2],
 		'unit' : unit
 		})
 
