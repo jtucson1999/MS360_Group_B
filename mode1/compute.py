@@ -80,7 +80,7 @@ def compute(sigma_x, sigma_y, tau_xy, setta):
     ax2.annotate(str(round(sigma_yr, 2)) + ',' + str(round(-tau_xyr, 2)), xy=(sigma_yr, -tau_xyr), xytext=(1.2 * sigma_yr, 1.2 * (-tau_xyr)), arrowprops = dict(fc='blue', lw=0.001))
 
     ax2.set_aspect('equal')
-    fig.show()
+    plt.show()
     # Save img and deliver it to mode1.html
     # run plt.plot, plt.title, etc.
     from io import BytesIO
