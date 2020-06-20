@@ -1,1 +1,1 @@
-web: gunicorn MS360_Group_B.wsgi --log-file -
+web: gunicorn ms360.wsgi --log-file -
