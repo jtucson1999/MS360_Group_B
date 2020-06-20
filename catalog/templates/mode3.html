@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Mode 3</h1>
+  <p>Here, You can calculate the angle of rotation required to get maximum shear stress.</p>
+
+  <form method="post" action="">{% csrf_token %}
+  <table>
+  	{% for field in form %}
+      <tr>
+      <td>{{ field.label }}</td>
+      <td>{{ field }}</td>
+      <td>{{ field.errors }}</td>
+      <td></td>
+      </tr>
+    {% endfor %}
+    {{ form.unit.label }}
+  </table>
+  <p><input type="submit" value="Compute"></form></p>
+
+  <p>
+  {% if result_image != None %}
+  <img src="{{ result_image }}" width="500">
+  <p>ϑ is {{ angle1 }}° or {{ angle2 }}°.</p> 
+  <p>Max.τ_xy is {{ max_tau }}({{ unit }}).</p>
+  {% endif %}
+  </p>
+ 
+{% endblock %}

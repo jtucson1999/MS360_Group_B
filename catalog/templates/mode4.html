@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Mode 4</h1>
+  <p>Here, You can calculate the state of strain when axis is rotated.</p>
+
+  <form method="post" action="">{% csrf_token %}
+  <table>
+  	{% for field in form %}
+      <tr>
+      <td>{{ field.label }}</td>
+      <td>{{ field }}</td>
+      <td>{{ field.help_text }}</td>
+      <td></td>
+      </tr>
+    {% endfor %}
+  </table>
+  <p><input type="submit" value="Compute"></form></p>
+
+  <p>
+  {% if result_image != None %}
+  <img src="{{ result_image }}" width="500">
+  <p>ε_x' is {{ epsilon1 }}(10^({{ unit }})) and ε_y' is {{ epsilon2 }}(10^({{ unit }}).</p>
+  <p>γ_x'y' is {{ gamma_xy }}(10^({{ unit }}).</p>
+  {% endif %}
+  </p>
+ 
+{% endblock %}

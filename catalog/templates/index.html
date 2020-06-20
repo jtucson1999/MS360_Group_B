@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Mohr's Circle Calculator Home</h1>
+  <p>Welcome! This is Mohr's circle calculator developed by <em>Ms360 Group B</em>.</p>
+  <p>Pleaso note that this program treats only in plane stress/strain condition.</p>   
+  <h2>Calculator Modes</h2>
+  <p>Please select the mode of this program.</p>
+  <ul>
+    <li><strong><a href="{% url 'mode1' %}">[Mode 1]</a></strong> Calculates the state of stress when axis is rotated.</li>
+    <li><strong><a href="{% url 'mode2' %}">[Mode 2]</a></strong> Calculates the required angle of rotation to get principal stress.</li>
+    <li><strong><a href="{% url 'mode3' %}">[Mode 3]</a></strong> Calculates the required angle of rotation to get maximum shear stress.</li>
+    <li><strong><a href="{% url 'mode4' %}">[Mode 4]</a></strong> Calculates the state of strain when axis is rotated.</li>
+    <li><strong><a href="{% url 'mode5' %}">[Mode 5]</a></strong> Calculates the required angle of rotation to get principal strain.</li>
+    <li><strong><a href="{% url 'mode6' %}">[Mode 6]</a></strong> Calculates the required angle of rotation to get maximum shear strain.</li>
+  </ul>
+{% endblock %}

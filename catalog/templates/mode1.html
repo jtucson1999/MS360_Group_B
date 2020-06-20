@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Mode 1</h1>
+  <p>Here, You can calculate the state of stress when axis is rotated.</p>
+
+  <form method="post" action="">{% csrf_token %}
+  <table>
+  	{% for field in form %}
+      <tr>
+      <td>{{ field.label }}</td>
+      <td>{{ field }}</td>
+      <td>{{ field.errors }}</td>
+      <td></td>
+      </tr>
+    {% endfor %}
+    {{ form.unit.label }}
+  </table>
+  <p><input type="submit" value="Compute"></form></p>
+
+  <p>
+  {% if image1 != None %}
+  <img src="{{ image1 }}" width="100">
+  <p>σ_x' is {{ sigmax }}({{ unit }}) and σ_y' is {{ sigmay }}({{ unit }}).</p> 
+  <p>τ_x'y' is {{ tauxy }}({{ unit }}).</p>
+  {% endif %}
+  </p>
+ 
+
+{% endblock %}
