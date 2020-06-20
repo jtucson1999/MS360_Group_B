@@ -83,12 +83,12 @@ def compute(sigma_x, sigma_y, tau_xy, setta):
     plt.show()
     # Save img and deliver it to mode1.html
     # run plt.plot, plt.title, etc.
-    from io import BytesIO
-    figfile = BytesIO()
-    fig.savefig(figfile, format='png')
-    figfile.seek(0)  # rewind to beginning of file
-    import base64
-    figdata_png = base64.b64encode(figfile.getvalue())
+    #from io import BytesIO
+    #figfile = BytesIO()
+    #fig.savefig(figfile, format='png')
+    #figfile.seek(0)  # rewind to beginning of file
+    #import base64
+    #figdata_png = base64.b64encode(figfile.getvalue())
 
 
-    return figdata_png, [str(round(sigma_xr, 3)), str(round(sigma_yr, 3)), str(round(tau_xyr, 3))]
+    return [str(round(sigma_xr, 3)), str(round(sigma_yr, 3)), str(round(tau_xyr, 3))]

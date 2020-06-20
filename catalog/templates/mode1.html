@@ -18,13 +18,8 @@
   </table>
   <p><input type="submit" value="Compute"></form></p>
 
-  <p>
-  {% if image1 != None %}
-  <img src="{{ image1 }}" width="100">
   <p>σ_x' is {{ sigmax }}({{ unit }}) and σ_y' is {{ sigmay }}({{ unit }}).</p> 
   <p>τ_x'y' is {{ tauxy }}({{ unit }}).</p>
-  {% endif %}
-  </p>
- 
+
 
 {% endblock %}
