@@ -85,11 +85,10 @@ def compute(sigma_x, sigma_y, tau_xy, setta):
         os.mkdir(BASE_DIR+'/mode1/static')
     else:
         # Remove old plot files
-        filename = os.path.join(BASE_DIR, 'mode1', 'static', '123.png')
+        filename = os.path.join(BASE_DIR, 'mode1', 'static', 'mode1.png')
         os.remove(filename)
-    # Use time since Jan 1, 1970 in filename in order make
-    # a unique filename that the browser has not chached
-    figdata_png = os.path.join(BASE_DIR, 'mode1', 'static', '123.png')
-    fig.savefig(figdata_png)
+    figdata_png = os.path.join(BASE_DIR, 'mode1', 'static', 'mode1.png')
+    plt.savefig(figdata_png)
+    plt.close('all')
 
     return [str(round(sigma_xr, 3)), str(round(sigma_yr, 3)), str(round(tau_xyr, 3))]

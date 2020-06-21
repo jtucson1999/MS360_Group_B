@@ -83,17 +83,16 @@ def compute(sigma_x, sigma_y, tau_xy):
     #plt.show()
 
 
-    # Save img and deliver it to mode1.html
+    # Save img and deliver it to mode2.html
     if not os.path.isdir(BASE_DIR+'/mode2/static'):
         os.mkdir(BASE_DIR+'/mode2/static')
     else:
         # Remove old plot files
-        filename = os.path.join(BASE_DIR, 'mode2', 'static', '123.png')
+        filename = os.path.join(BASE_DIR, 'mode2', 'static', 'mode2.png')
         os.remove(filename)
-    # Use time since Jan 1, 1970 in filename in order make
-    # a unique filename that the browser has not chached
-    figdata_png = os.path.join(BASE_DIR, 'mode2', 'static', '123.png')
-    fig.savefig(figdata_png)
+    figdata_png = os.path.join(BASE_DIR, 'mode2', 'static', 'mode2.png')
+    plt.savefig(figdata_png)
+    plt.close('all')
 
 
     return [str(round(setta_principal, 3)), str(round(setta_principal + 90, 3)), str(round(principal_stress_max, 3)), str(round(principal_stress_min, 3))]

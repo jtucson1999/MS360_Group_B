@@ -87,12 +87,13 @@ def compute(epsilon_x, epsilon_y, gamma_xy, setta):
         os.mkdir(BASE_DIR+'/mode4/static')
     else:
         # Remove old plot files
-        filename = os.path.join(BASE_DIR, 'mode4', 'static', '123.png')
+        filename = os.path.join(BASE_DIR, 'mode4', 'static', 'mode4.png')
         os.remove(filename)
     # Use time since Jan 1, 1970 in filename in order make
     # a unique filename that the browser has not chached
-    figdata_png = os.path.join(BASE_DIR, 'mode4', 'static', '123.png')
-    fig.savefig(figdata_png)
+    figdata_png = os.path.join(BASE_DIR, 'mode4', 'static', 'mode4.png')
+    plt.savefig(figdata_png)
+    plt.close('all')
 
 
     return [str(round(epsilon_xr, 3)), str(round(epsilon_yr, 3)), str(round(gamma_xyr, 3))]

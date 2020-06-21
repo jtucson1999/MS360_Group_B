@@ -86,12 +86,13 @@ def compute(epsilon_x, epsilon_y, gamma_xy):
         os.mkdir(BASE_DIR+'/mode5/static')
     else:
         # Remove old plot files
-        filename = os.path.join(BASE_DIR, 'mode5', 'static', '123.png')
+        filename = os.path.join(BASE_DIR, 'mode5', 'static', 'mode5.png')
         os.remove(filename)
     # Use time since Jan 1, 1970 in filename in order make
     # a unique filename that the browser has not chached
-    figdata_png = os.path.join(BASE_DIR, 'mode5', 'static', '123.png')
-    fig.savefig(figdata_png)
+    figdata_png = os.path.join(BASE_DIR, 'mode5', 'static', 'mode5.png')
+    plt.savefig(figdata_png)
+    plt.close('all')
 
 
     return [str(round(setta_principal, 3)), str(round(setta_principal + 90, 3)), str(round(principal_strain_max, 3)), str(round(principal_strain_min, 3))] 
