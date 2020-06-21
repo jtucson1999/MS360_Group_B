@@ -1,8 +1,8 @@
+from ms360.settings import BASE_DIR
 import matplotlib.pyplot as plt
 import math
-import os, time, glob
-import base64
-from io import BytesIO
+import os
+
 
 def compute(sigma_x, sigma_y, tau_xy):
     sigma_avg = (float(sigma_x) + float(sigma_y)) / 2  # center of the Mohr's circle
@@ -78,14 +78,19 @@ def compute(sigma_x, sigma_y, tau_xy):
 
     plt.legend(loc='lower left')
     ax2.set_aspect('equal')
-    plt.show()
+    #plt.show()
     
     # Save img and deliver it to mode1.html
-    figfile = BytesIO()
-    plt.savefig(figfile, format='png')
-    figfile.seek(0)  # rewind to beginning of file
-    figdata_png = figfile.getvalue()  # extract string (stream of bytes)
-    figdata_png= base64.b64encode(figdata_png)
+    if not os.path.isdir(BASE_DIR+'/mode3/static'):
+        os.mkdir(BASE_DIR+'/mode3/static')
+    else:
+        # Remove old plot files
+        filename = os.path.join(BASE_DIR, 'mode3', 'static', '123.png')
+        os.remove(filename)
+    # Use time since Jan 1, 1970 in filename in order make
+    # a unique filename that the browser has not chached
+    figdata_png = os.path.join(BASE_DIR, 'mode3', 'static', '123.png')
+    fig.savefig(figdata_png)
 
 
-    return figdata_png, [str(round(setta_tau_max, 3)), str(round(setta_tau_max + 90, 3)), str(round(tau_max, 3))]
+    return [str(round(setta_tau_max, 3)), str(round(setta_tau_max + 90, 3)), str(round(tau_max, 3))]

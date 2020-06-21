@@ -17,13 +17,13 @@
   </table>
   <p><input type="submit" value="Compute"></form></p>
 
-  <p>
-  {% if result_image != None %}
-  <img src="{{ result_image }}" width="500">
+
+  {% load static %}
+  <img src= "{% static '123.png' %}" >
   <p>ϑ is {{ angle1 }}° or {{ angle2 }}°.</p>
   <p>σ_1 is {{ sigma1 }}({{ unit }}), and σ_2 is {{ sigma2 }}({{ unit }}).</p>
-  {% endif %}
-  </p>
+
+
  
 
 {% endblock %}

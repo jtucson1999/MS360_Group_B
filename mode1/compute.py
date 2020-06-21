@@ -1,6 +1,7 @@
+from ms360.settings import BASE_DIR
 import matplotlib.pyplot as plt
 import math
-import os, time, glob
+import os
 
 def compute(sigma_x, sigma_y, tau_xy, setta):
     sigma_avg = (float(sigma_x) + float(sigma_y)) / 2  # center of the Mohr's circle
@@ -78,24 +79,17 @@ def compute(sigma_x, sigma_y, tau_xy, setta):
     ax2.annotate(str(round(sigma_yr, 2)) + ',' + str(round(-tau_xyr, 2)), xy=(sigma_yr, -tau_xyr), xytext=(1.2 * sigma_yr, 1.2 * (-tau_xyr)), arrowprops = dict(fc='blue', lw=0.001))
 
     ax2.set_aspect('equal')
-    plt.show()
-    # Save img and deliver it to mode1.html
-    # run plt.plot, plt.title, etc.
-    from io import BytesIO
-    figfile = BytesIO()
-    fig.savefig(figfile, format='png')
-    figfile.seek(0)  # rewind to beginning of file
-    import base64
-    figdata_png = base64.b64encode(figfile.getvalue())
-    #if not os.path.isdir('static'):
-    #    os.mkdir('static')
-    #else:
+    #plt.show()
+
+    if not os.path.isdir(BASE_DIR+'/mode1/static'):
+        os.mkdir(BASE_DIR+'/mode1/static')
+    else:
         # Remove old plot files
-    #    for filename in glob.glob(os.path.join('static', '*.png')):
-    #        os.remove(filename)
+        filename = os.path.join(BASE_DIR, 'mode1', 'static', '123.png')
+        os.remove(filename)
     # Use time since Jan 1, 1970 in filename in order make
     # a unique filename that the browser has not chached
-    #figdata_png = os.path.join('static', str(123) + '.png')
-    #plt.savefig(figdata_png)
+    figdata_png = os.path.join(BASE_DIR, 'mode1', 'static', '123.png')
+    fig.savefig(figdata_png)
 
-    return figdata_png, [str(round(sigma_xr, 3)), str(round(sigma_yr, 3)), str(round(tau_xyr, 3))]
+    return [str(round(sigma_xr, 3)), str(round(sigma_yr, 3)), str(round(tau_xyr, 3))]

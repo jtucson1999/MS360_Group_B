@@ -17,13 +17,11 @@
   </table>
   <p><input type="submit" value="Compute"></form></p>
   
-  <p>
-  {% if result_image != None %}
-  <img src="{{image}}" width="500">
+  {% load static %}
+  <img src= "{% static '123.png' %}" >
   <p>σ_x' is {{ sigmax }}({{ unit }}) and σ_y' is {{ sigmay }}({{ unit }}).</p> 
   <p>τ_x'y' is {{ tauxy }}({{ unit }}).</p>
-  {% endif %}
-  </p>
+
 
 
 {% endblock %}

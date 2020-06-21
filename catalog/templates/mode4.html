@@ -17,12 +17,10 @@
   </table>
   <p><input type="submit" value="Compute"></form></p>
 
-  <p>
-  {% if result_image != None %}
-  <img src="{{ result_image }}" width="500">
+  {% load static %}
+  <img src= "{% static '123.png' %}" >
   <p>ε_x' is {{ epsilon1 }}(10^({{ unit }})) and ε_y' is {{ epsilon2 }}(10^({{ unit }}).</p>
   <p>γ_x'y' is {{ gamma_xy }}(10^({{ unit }}).</p>
-  {% endif %}
-  </p>
+
  
 {% endblock %}

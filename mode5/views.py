@@ -8,7 +8,7 @@ import os
 
 def mode5(request):
 	os.chdir(os.path.dirname(__file__))
-	result = [None, [None, None, None, None]]
+	result = [None, None, None, None]
 	unit = None
 	if request.method == 'POST':
 		form = InputForm(request.POST)
@@ -23,10 +23,9 @@ def mode5(request):
 	
 	return render(request, 'mode5.html', {
 		'form' : form,
-		'result_image': result[0],
-		'angle1' : result[1][0],
-		'angle2' : result[1][1],
-		'epsilon1' : result[1][2],
-		'epsilon2' : result[1][3],
+		'angle1' : result[0],
+		'angle2' : result[1],
+		'epsilon1' : result[2],
+		'epsilon2' : result[3],
 		'unit' : unit
 		})
