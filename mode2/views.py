@@ -25,6 +25,6 @@ def mode2(request):
 		'angle1' : result[0],
 		'angle2' : result[1],
 		'sigma1' : result[2],
-		'sigma2' : result[2],
+		'sigma2' : result[3],
 		'unit' : unit
 		})
